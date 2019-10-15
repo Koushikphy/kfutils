@@ -1,0 +1,23 @@
+int1d
+------
+    -col    1 values
+    -ng     (ngrid )
+     -or-
+    -nr      (numpy txt)
+int2d
+------
+    -col    2 values
+    -ng     (ngrid ) 2 values
+     -or-
+    -nr      (numpy txt) 2 values 
+
+
+repeat/mirror
+----------
+    -col 1 value 
+    -range range to use
+    -times  
+
+
+common 
+-rad2deg/-deg2rad/-dropcol    col no
