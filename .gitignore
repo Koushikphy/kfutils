@@ -3,3 +3,4 @@ Surf_*
 dist
 build
 *egg*
+.pypirc

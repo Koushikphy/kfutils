@@ -54,7 +54,7 @@ def listOfInts(val):
 
 
 
-def main():
+def createParser():
     #main parser
     parser = CustomParser(
         prog="kutils",
@@ -72,8 +72,12 @@ def main():
     return parser.parse_args()
 
 
-if __name__=="__main__":
-    args = main()
+
+
+
+def main():
+    print('hi there')
+    args = createParser()
     inpFile = args.ifile
 
     cols = args.cols

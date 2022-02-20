@@ -1,13 +1,14 @@
-import os
-from setuptools import setup
+from setuptools import setup, find_packages
 
-
+with open('./README.md') as f:
+    txt = f.read()
 
 
 setup(
-    name='kutils',
-    version='0.0.1',
-    description='Installer for the ADT_Program_Package.',
+    name='koutils',
+    version='0.0.3',
+    description='A common file operation utility',
+    long_description=txt,
     author='Koushik Naskar',
     author_email='koushik.naskar9@gmail.com',
     license = "MIT",
@@ -22,14 +23,11 @@ setup(
     keywords='File Operations',
     project_urls={'Source Code':'https://github.com/Koushikphy/kutils'},
     zip_safe=True,
-    # install_requires=['numpy >=1.13.0'],
-    extras_require={
-        'h5':  ["h5py"]
-    },
     python_requires='>=2.7',
+    packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'futils = src.futils:main',
+            'koutils = koutils.cli:main',
         ],
     }
 )
