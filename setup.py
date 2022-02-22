@@ -5,7 +5,7 @@ with open('./README.md') as f:
 
 
 setup(
-    name='koutils',
+    name='kfutils',
     version='0.0.4',
     description='A common file operation utility',
     long_description=txt,
@@ -17,8 +17,10 @@ setup(
         'Environment :: Console',
         'Intended Audience :: Science/Research',
         'Natural Language :: English',
-        'Programming Language :: Python :: 3.9',
+        'License :: OSI Approved :: MIT',
+        'Operating System :: OS Independent',
         'Programming Language :: Python :: Implementation :: CPython'
+        'Topic :: System :: Shells'
     ],
     keywords='File Operations',
     project_urls={'Source Code':'https://github.com/Koushikphy/kutils'},
@@ -27,7 +29,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'koutils = koutils.cli:main',
+            'kfutils = kfutils.cli:main',
         ],
     }
 )
