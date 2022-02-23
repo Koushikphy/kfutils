@@ -6,7 +6,7 @@ with open('./README.md') as f:
 
 setup(
     name='kfutils',
-    version='0.0.6',
+    version='0.0.7',
     description='A common file operation utility',
     long_description=txt,
     author='Koushik Naskar',
