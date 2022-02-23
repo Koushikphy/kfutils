@@ -46,7 +46,7 @@ jobs:
 
       - name: Get Package version
         id: app-version
-        run: 
+        run: |
           PACKAGE_VERSION=$(python setup.py --version)
           echo ::set-output name=current-version::$PACKAGE_VERSION
           echo $PACKAGE_VERSION
