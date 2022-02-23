@@ -13,30 +13,11 @@ import numpy as np
 
 
 class CustomParser(argparse.ArgumentParser):
-    # subcommands are mandatory arguments in python 2 but not in python 3.
-    # So, absence of any subcommand will throw an error in python 2 and thus
-    # trigger this function to show the full manual but not in python 3
     def error(self, message):
         sys.stderr.write('\033[91mError: %s\n\033[0m' % message)
         self.print_help()
         sys.exit(2)
 
-
-def make_logger(log_name):
-    #Create the logger
-    logger = logging.getLogger(log_name)
-    logger.setLevel(logging.DEBUG)
-    # file = os.path.join(os.path.expanduser('~'), 'ADT.log' )
-    fh = logging.FileHandler("ADT.log")
-    fh.setLevel(logging.DEBUG)
-    formatter = logging.Formatter("[%(asctime)s] - %(name)22s - [%(levelname)6s] - %(message)s","%d-%m-%Y %I:%M:%S %p")
-    fh.setFormatter(formatter)
-    logger.addHandler(fh)
-
-    ch = logging.StreamHandler(sys.stdout)
-    ch.setFormatter(formatter)
-    logger.addHandler(ch)
-    return logger
 
 
 def listOfInts(val):
@@ -51,15 +32,12 @@ def listOfInts(val):
 
 
 
-
-
-
 def createParser():
     #main parser
     parser = CustomParser(
         prog="kutils",
         formatter_class=argparse.RawTextHelpFormatter,
-        description = "Tool for common file operations."
+        description = "A tool for common file operations."
         )
 
     #adding options for numerical jobs
@@ -76,7 +54,6 @@ def createParser():
 
 
 def main():
-    print('hi there')
     args = createParser()
     inpFile = args.ifile
 

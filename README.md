@@ -3,7 +3,7 @@ A common file operation utility
 
 #### Install it with 
 ```bash
-pip install kfutils==0.0.5
+pip install kfutils
 ```
 
 #### Available operations
