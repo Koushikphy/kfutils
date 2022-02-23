@@ -37,25 +37,22 @@ jobs:
       - name: Build package
         run: |
           python -m build
-      # - name: Publish to PyPI register
-      #   run:
-      #     python3 -m twine upload dist/* 
-      #   env:
-      #     TWINE_USERNAME: __token__
-      #     TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      - name: Publish to PyPI register
+        run:
+          python3 -m twine upload dist/* 
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
 
       - name: Get Package version
         id: app-version
-        run: |
-          PACKAGE_VERSION=$(python setup.py --version)
-          echo ::set-output name=current-version::$PACKAGE_VERSION
-          echo $PACKAGE_VERSION
+        run: echo ::set-output name=current-version::$(python setup.py --version)
       - name: Release to Github
         uses: ncipollo/release-action@v1
         with:
           artifacts: "dist/*"
           allowUpdates: true
-          tag: ${{ steps.app_version.outputs.current-version}}
+          tag: ${{ steps.app-version.outputs.current-version}}
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
           artifactErrorsFailBuild: true
