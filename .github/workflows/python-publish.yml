@@ -49,7 +49,7 @@ jobs:
         run: 
           PACKAGE_VERSION=$(python setup.py --version)
           echo ::set-output name=current-version::$PACKAGE_VERSION
-  
+          echo $PACKAGE_VERSION
       - name: Release to Github
         uses: ncipollo/release-action@v1
         with:
