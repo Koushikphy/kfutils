@@ -37,6 +37,7 @@ jobs:
       - name: Build package
         run: |
           python -m build
+  
       - name: Publish to PyPI register
         run:
           python3 -m twine upload dist/* 
@@ -45,9 +46,12 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
 
       - name: Get Package version
+        if: always()
         id: app-version
         run: echo ::set-output name=current-version::$(python setup.py --version)
+
       - name: Release to Github
+        if: always()
         uses: ncipollo/release-action@v1
         with:
           artifacts: "dist/*"
