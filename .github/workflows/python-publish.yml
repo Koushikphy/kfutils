@@ -53,10 +53,12 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           replacesArtifacts: true
           artifactErrorsFailBuild: true
+
         # even if pypi upload fails upload to github release
       - name: Publish to PyPI register
         run:
           python3 -m twine upload dist/* 
+        continue-on-error: true
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
