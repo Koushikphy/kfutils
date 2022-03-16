@@ -10,6 +10,8 @@ import argparse
 import glob
 import numpy as np
 
+__all__ = []
+
 
 class CustomParser(argparse.ArgumentParser):
 
