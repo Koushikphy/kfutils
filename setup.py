@@ -22,8 +22,12 @@ setup(name='kfutils',
       keywords='File Operations',
       project_urls={'Source Code': 'https://github.com/Koushikphy/kutils'},
       zip_safe=True,
-      python_requires='>=2.7',
+      python_requires='>=3.6',
       packages=find_packages(),
+    extras_require={
+        'csaps':  ["csaps"],
+        'tabulate':  ["tabulate"]
+    },
       entry_points={
           'console_scripts': [
               'kfutils = kfutils.cli:main',
