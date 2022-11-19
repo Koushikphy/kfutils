@@ -38,7 +38,7 @@ def createParser():
     #main parser
     parser = CustomParser(prog="kutils",
                           formatter_class=argparse.RawTextHelpFormatter,
-                          description="A tool for common file operations.\n")
+                          description="A tool for common data file operation.\n Created by: Koushik Naskar (koushik.naskar9@gmail.com)")
 
     #adding options for numerical jobs
     parser.add_argument('-i', type=str, help="Input file name. \nIf no operations are given it will show the stats about the file.", metavar="FILE", required=True)

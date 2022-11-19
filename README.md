@@ -1,12 +1,13 @@
-A common file operation utility 
+## `kfutils`: A tool for common data file operations.
+[![PyPI version](https://badge.fury.io/py/kfutils.svg)](https://badge.fury.io/py/kfutils)
 
-
-#### Install it with 
+### Instalation
+Download and install the latest package from the [release section](https://github.com/Koushikphy/kfutils/releases/latest) or directly by pip
 ```bash
 pip install kfutils
 ```
 
-#### Available operations
+### Usage
 | Argument    |  Description|
 | ----------- | ----------- 
 |    `-i`     | Input file name <br>If no operations are given it will show the stats about the file. |
