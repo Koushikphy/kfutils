@@ -38,7 +38,7 @@ def createParser():
     #main parser
     parser = CustomParser(prog="kutils",
                           formatter_class=argparse.RawTextHelpFormatter,
-                          description="A tool for common file operations.")
+                          description="A tool for common file operations.\n")
 
     #adding options for numerical jobs
     parser.add_argument('-i', type=str, help="File name", metavar="FILE", required=True)
@@ -58,6 +58,10 @@ def main():
     inpFile = args.i
 
     cols = args.c
+
+    if(args.s):
+        showStats(args.s)
+        return
 
     # read file
     data = np.loadtxt(inpFile)

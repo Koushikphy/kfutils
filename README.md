@@ -7,5 +7,12 @@ pip install kfutils
 ```
 
 #### Available operations
-1. Delete any column
-2. Convert columns to radian to degreee and vice-versa.
+| Argument    |  Description|
+| ----------- | ----------- 
+|    `-i`     | Input file name |
+|    `-o`     | Output file name  | 
+|    `-c`     | Index(s) of grid columns  | 
+|    `-s`     | Input file name to get overall stats |
+|    `-rd`    | List of columns to convert to degree from radian |
+|    `-dr`    | List of columns to convert to radin from degree |
+|    `-dc`    | List of columns to delete |
