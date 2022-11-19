@@ -41,10 +41,9 @@ def createParser():
                           description="A tool for common file operations.\n")
 
     #adding options for numerical jobs
-    parser.add_argument('-i', type=str, help="File name", metavar="FILE", required=True)
+    parser.add_argument('-i', type=str, help="Input file name. \nIf no operations are given it will show the stats about the file.", metavar="FILE", required=True)
     parser.add_argument('-o', type=str, help="Output file name", metavar="FILE")
-    parser.add_argument('-s', type=str, help="Stats about this file.", metavar="FILE")
-    parser.add_argument('-c', help="index of grid columns", nargs='+', metavar='COLS', required=True, type=listOfInts)
+    parser.add_argument('-c', help="index(s) of grid columns. 2 columns for 2D file.", nargs='+', metavar='COLS', type=listOfInts)
     parser.add_argument('-rd', help="index of columns to convert to degree from radian",
                         nargs='+', metavar='COLS',type=listOfInts)
     parser.add_argument('-dr', help="index of columns to convert to radian to degree",
@@ -53,16 +52,26 @@ def createParser():
     return parser.parse_args()
 
 
+def commandGiven(args):
+    # check any of these command is given or not
+    for elem in ['c','rd','dr','dc']:
+        if getattr(args,elem):
+            return True
+    return False
+
+
 def main():
     args = createParser()
     inpFile = args.i
 
-    cols = args.c
 
-    if(args.s):
-        showStats(args.s)
+    if not commandGiven(args):  
+        # no other operations are specified so just show stats
+        showStats(args.i)
         return
 
+
+    cols = args.c
     # read file
     data = np.loadtxt(inpFile)
 
