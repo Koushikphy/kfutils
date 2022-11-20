@@ -10,7 +10,7 @@ import argparse
 import glob
 import numpy as np
 
-from funcs import *
+from kfutils.funcs import *
 
 
 __all__ = []

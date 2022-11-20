@@ -4,7 +4,7 @@ with open('./README.md') as f:
     txt = f.read()
 
 setup(name='kfutils',
-    version='0.1.1',
+    version='0.1.2',
     description='A tool for common data file operation.',
     long_description=txt,
     long_description_content_type='text/markdown',
@@ -25,10 +25,10 @@ setup(name='kfutils',
     zip_safe=True,
     python_requires='>=3.6',
     packages=find_packages(),
-    install_require={
-        'csaps':  ["csaps"],
-        'tabulate':  ["tabulate"]
-    },
+    install_requires=[
+        'csaps',
+        'tabulate'
+    ],
     entry_points={
         'console_scripts': [
             'kfutils = kfutils.cli:main',
