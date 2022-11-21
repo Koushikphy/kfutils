@@ -1,1 +1,1 @@
-from .funcs import * 
+from kfutils.funcs import getShape, showStats, writeShapedFile, writeFile, smoothen, repeat, mirror, PrepData

@@ -49,6 +49,7 @@ def createParser():
     parser.add_argument('-dr', help="index of columns to convert to radian to degree",
                         nargs='+', metavar='COLS', type=listOfInts)
     parser.add_argument('-dc', help="index of columns to drop", nargs='+', metavar='COLS', type=listOfInts)
+    parser.add_argument('-int', help="Interpolate to new number of grid. Can be 1D or 2D.", nargs='+', metavar='COLS', type=listOfInts)
     return parser.parse_args()
 
 
@@ -93,7 +94,7 @@ def main():
     if len(cols) == 1:  #1D file
         write1DFile(outFile, data)
     else:
-        write2DFile(outFile, data, cols[0])
+        writeFile(outFile, data, cols[0])
 
 
 
