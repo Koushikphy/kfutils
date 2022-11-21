@@ -4,7 +4,7 @@ with open('./README.md') as f:
     txt = f.read()
 
 setup(name='kfutils',
-    version='0.1.2',
+    version='0.1.3',
     description='A tool for common data file operation.',
     long_description=txt,
     long_description_content_type='text/markdown',
@@ -18,6 +18,7 @@ setup(name='kfutils',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: 3.6',
         'Topic :: System :: Shells'
     ],
     keywords='File Operations',

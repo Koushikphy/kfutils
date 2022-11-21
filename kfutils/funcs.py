@@ -7,7 +7,7 @@ from tabulate import tabulate
 import time
 
 
-__all__ = ['showStats', 'smoothen', 'writeFile', 'write1DFile', 'repeat', 'mirror','PrepData']
+__all__ = ['showStats', 'smoothen', 'writeFile', 'write1DFile', 'repeat', 'mirror','PrepData','rectGridInt','lineGridInt']
 
 
 def getSize(file):
@@ -21,7 +21,7 @@ def getSize(file):
 
 def showStats(fileName):
     '''
-    Show stats about the current file
+    Show stats about the file.
     '''
     data = np.loadtxt(fileName)
     table = [
@@ -63,12 +63,16 @@ def smoothen(data, shape, tc, pc, cols, sm=0.95):
 
 
 def getShape(data):
+    '''
+    Get details about the shape of the data
+    '''
     for i in range(data.shape[1]):
         print(np.unique(data[:,i]).shape)
 
 
 
 def writeShapedFile(file,data,fmt='%.8f'):
+    ''' Write a Shaped file '''
     assert len(data.shape)==3, "A 3D data is required for this function"
     with open(file, 'w') as f:
         for i in data:
@@ -79,11 +83,13 @@ def writeShapedFile(file,data,fmt='%.8f'):
 
 
 def write1DFile(file,dat,fmt='%.8f'):
+    ''' Write a 1D file'''
     np.savetxt(file, dat, delimiter='\t', fmt=fmt)
 
 
 
 def writeFile(file,dat,tc=0,fmt='%.8f'):
+    '''Write a 2D file'''
     assert len(dat.shape)==2, "A 2D data is required for this function"
 
     with open(file,'w') as f:
@@ -93,7 +99,26 @@ def writeFile(file,dat,tc=0,fmt='%.8f'):
 
 
 
+def lineGridInt(data,fc,newGrid):
+    '''Interpolate a 1D data'''
+    # make a rectangular data dense or vice versa
+    g = data[:,fc]
+
+    ng = np.linspace(g.min(),g.max(),newGrid)
+
+    result = []
+    for i in range(data.shape[1]):
+        if i==fc:
+            res = ng
+        else:
+            res = InterpolatedUnivariateSpline(g,data[:,i])(ng)
+        result.append(res)
+    return np.column_stack(result)
+
+
+
 def rectGridInt(data, fc, sc, newGrid1, newGrid2):
+    '''Interpolate a 2D data'''
     # make a rectangular data dense or vice versa
     g1 = np.unique(data[:,fc])
     g2 = np.unique(data[:,sc])
@@ -153,12 +178,6 @@ def repeat(data, fc=0, sc=1, pDiff=1):
 
 
 
-
-
-
-
-
-
 class PrepData(object):
     # Prepare your data with object chaining
     def __init__(self,fileName):
@@ -204,7 +223,6 @@ class PrepData(object):
     def reshape3D(self,tc=0,pc=1):
         tShape = np.unique(self.data[:,tc]).shape[0]
         pShape = np.unique(self.data[:,pc]).shape[0]
-        shape = (tShape,pShape,-1)
         self.data.shape = (tShape,pShape,-1)
         print(f"Data Reshaped as {self.data.shape}")
         return self

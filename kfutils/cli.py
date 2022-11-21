@@ -86,6 +86,16 @@ def main():
     if (args.dc):
         data = np.delete(data, args.dc, axis=1)
 
+
+    if (args.int):
+        assert len(cols)==len(args.int), "Invalid number of columns for interpolation"
+        if len(cols)==1:
+            data = lineGridInt(data, cols[0], args.int[0])
+        elif len(cols)==2:
+            data = lineGridInt(data, *cols, *args.int)
+
+
+
     # now write file
     outFile = args.o
     if not outFile:
