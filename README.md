@@ -1,24 +1,26 @@
 ## `kfutils`: A tool for common data file operations.
-[![Alt text](https://img.shields.io/pypi/v/kfutils.svg)](https://pypi.org/project/kfutils/)
-[![Alt text](https://img.shields.io/pypi/pyversions/kfutils.svg)](https://pypi.org/project/kfutils/)
-[![Alt text](https://img.shields.io/pypi/dm/kfutils.svg)](https://pypi.org/project/kfutils/)
-[![Alt text](https://img.shields.io/pypi/l/kfutils.svg)](https://pypi.org/project/kfutils/)
-[![Alt text](https://img.shields.io/pypi/status/kfutils.svg)](https://pypi.org/project/kfutils/)
+[![Alt text](https://img.shields.io/pypi/v/kfutils.svg?style=for-the-badge&logo=pypi)](https://pypi.org/project/kfutils/)
+[![Alt text](https://img.shields.io/pypi/pyversions/kfutils.svg?style=for-the-badge&logo=python)](https://pypi.org/project/kfutils/)
+[![Alt text](https://img.shields.io/pypi/dm/kfutils.svg?style=for-the-badge)](https://pypi.org/project/kfutils/)
+[![Alt text](https://img.shields.io/pypi/l/kfutils.svg?style=for-the-badge)](https://pypi.org/project/kfutils/)
+[![Alt text](https://img.shields.io/pypi/status/kfutils.svg?style=for-the-badge)](https://pypi.org/project/kfutils/)
 
 
 <!--[![PyPI version](https://badge.fury.io/py/kfutils.svg)](https://badge.fury.io/py/kfutils) 
  ![Alt text](https://img.shields.io/pypi/v/kfutils.svg) ![Alt text](https://img.shields.io/pypi/format/kfutils.svg) -->
 
-### Instalation
+### ⚒ Instalation
 Download and install the latest package from the [release section](https://github.com/Koushikphy/kfutils/releases/latest) or directly by pip
 ```bash
 pip install kfutils
 ```
 This installs the python module and a command line tool named `kfutils`.
 
-### Usage 
+&nbsp;
 
-- __Using as a command line tool.__
+### ⚡ Usage 
+
+ __✈Using as a command line tool.__
 ```bash
 kutils [-h] -i FILE [-o FILE] [-c COLS [COLS ...]] [-rd COLS [COLS ...]] [-dr COLS [COLS ...]] [-dc COLS [COLS ...]] [-int COLS [COLS ...]]
 ```
@@ -34,6 +36,7 @@ kutils [-h] -i FILE [-o FILE] [-c COLS [COLS ...]] [-rd COLS [COLS ...]] [-dr CO
 |    `-dc`    | List of columns to delete |
 |    `-int`   | Grid for the columns to interpolate |
 
+&nbsp;
 
-- __Using as a python module__  
+ __🚀Using as a python module__  
 The toplevel python module `kfutils` exposes several functions/class.
