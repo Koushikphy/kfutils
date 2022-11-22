@@ -76,6 +76,12 @@ def main():
     # read file
     data = np.loadtxt(inpFile)
 
+
+    if (args.dc):
+        print("NOTE: Delete columns will take precedence over other operations.")
+        data = np.delete(data, args.dc, axis=1)
+
+
     # rad to deg
     if (args.rd):
         data[:, args.rd] = np.rad2deg(data[:, args.rd])
@@ -83,8 +89,6 @@ def main():
     if (args.dr):
         data[:, args.dr] = np.deg2rad(data[:, args.dr])
     # delete columns
-    if (args.dc):
-        data = np.delete(data, args.dc, axis=1)
 
 
     if (args.int):
@@ -92,7 +96,7 @@ def main():
         if len(cols)==1:
             data = lineGridInt(data, cols[0], args.int[0])
         elif len(cols)==2:
-            data = lineGridInt(data, *cols, *args.int)
+            data = rectGridInt(data, *cols, *args.int)
 
 
 

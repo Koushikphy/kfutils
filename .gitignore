@@ -4,3 +4,4 @@ build
 *egg*
 .pypirc
 dist
+test*
