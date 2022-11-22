@@ -9,12 +9,12 @@ import textwrap
 import argparse
 import glob
 import numpy as np
-
+import pkg_resources
 from kfutils.funcs import *
 
 
 __all__ = []
-
+version= pkg_resources.require('kfutils')[0].version
 
 class CustomParser(argparse.ArgumentParser):
 
@@ -38,7 +38,9 @@ def createParser():
     #main parser
     parser = CustomParser(prog="kutils",
                           formatter_class=argparse.RawTextHelpFormatter,
-                          description="A tool for common data file operation.\n Created by: Koushik Naskar (koushik.naskar9@gmail.com)")
+                          description="A tool for common data file operation.",
+                          epilog="Version: {}\nCreated by Koushik Naskar (koushik.naskar9@gmail.com)".format(version)
+                          )
 
     #adding options for numerical jobs
     parser.add_argument('-i', type=str, help="Input file name. \nIf no operations are given it will show the stats about the file.", metavar="FILE", required=True)
