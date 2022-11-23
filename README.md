@@ -19,19 +19,20 @@ This installs the python module and a command line tool named `kfutils`.
 
  __✈ Using as a command line tool.__
 ```bash
-kutils [-h] -i FILE [-o FILE] [-c COLS [COLS ...]] [-rd COLS [COLS ...]] [-dr COLS [COLS ...]] [-dc COLS [COLS ...]] [-int COLS [COLS ...]]
+kutils [-h] -i FILE [-o FILE] [-c COLS [COLS ...]] [-rd COLS [COLS ...]] [-dr COLS [COLS ...]] [-dc COLS [COLS ...]] [-int N [N ...]] [-mir N] [-rep N]
 ```
 
 | Argument    |  Description|
 | ----------- | ----------- 
 |    `-i`     | Input file name <br>If no operations are given it will show the stats about the file. |
-|    `-o`     | Output file name | 
-|    `-c`     | Index(s) of grid columns. <br> 2 columns for 2D file. | 
-|    `-s`     | Input file name to get overall stats |
-|    `-rd`    | List of columns to convert to degree from radian |
-|    `-dr`    | List of columns to convert to radian from degree |
-|    `-dc`    | List of columns to delete |
-|    `-int`   | Grid for the columns to interpolate |  
+|    `-o`     | OOutput file name. (default: '_out' prefix to input file name) | 
+|    `-c`     | Index(s) of grid columns. 2 columns for 2D file. | 
+|    `-rd`    | Index(s) of columns to convert to degree from radian |
+|    `-dr`    | Index(s) of columns to convert to radian from degree |
+|    `-dc`    | Index(s) of columns to delete |
+|    `-int`   | Number of grid to interpolate to. Can be 1D or 2D |  
+|    `-mir`   | Number of times to mirror |  
+|    `-rep`   | Number of times to repeat |  
 
 
 

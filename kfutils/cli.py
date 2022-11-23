@@ -38,26 +38,29 @@ def createParser():
     #main parser
     parser = CustomParser(prog="kutils",
                           formatter_class=argparse.RawTextHelpFormatter,
-                          description="A tool for common data file operation.",
-                          epilog="Version: {}\nCreated by Koushik Naskar (koushik.naskar9@gmail.com)".format(version)
+                          description="A tool for common data file operations.",
+                          epilog="Version: {}\nhttps://github.com/Koushikphy/kfutils\nCreated by Koushik Naskar (koushik.naskar9@gmail.com)".format(version)
                           )
 
     #adding options for numerical jobs
     parser.add_argument('-i', type=str, help="Input file name. \nIf no operations are given it will show the stats about the file.", metavar="FILE", required=True)
-    parser.add_argument('-o', type=str, help="Output file name", metavar="FILE")
-    parser.add_argument('-c', help="index(s) of grid columns. 2 columns for 2D file.", nargs='+', metavar='COLS', type=listOfInts)
-    parser.add_argument('-rd', help="index of columns to convert to degree from radian",
+    parser.add_argument('-o', type=str, help="Output file name. (default: '_out' prefix to input file name)", metavar="FILE")
+    parser.add_argument('-c', help="Index(s) of grid columns. 2 columns for 2D file.", nargs='+', metavar='COLS', type=listOfInts)
+    parser.add_argument('-rd', help="Index(s) of columns to convert to degree from radian",
                         nargs='+', metavar='COLS',type=listOfInts)
-    parser.add_argument('-dr', help="index of columns to convert to radian to degree",
+    parser.add_argument('-dr', help="Index(s) of columns to convert to radian from degree",
                         nargs='+', metavar='COLS', type=listOfInts)
-    parser.add_argument('-dc', help="index of columns to drop", nargs='+', metavar='COLS', type=listOfInts)
-    parser.add_argument('-int', help="Interpolate to new number of grid. Can be 1D or 2D.", nargs='+', metavar='COLS', type=listOfInts)
+    parser.add_argument('-dc', help="Index(s) of columns to delete", nargs='+', metavar='COLS', type=listOfInts)
+    parser.add_argument('-int', help="Number of grid to interpolate to. Can be 1D or 2D", nargs='+', metavar='N', type=listOfInts)
+    parser.add_argument('-mir', help="Number of times to mirror", metavar='N', type=int)
+    parser.add_argument('-rep', help="Number of times to repeat", metavar='N', type=int)
+
     return parser.parse_args()
 
 
 def commandGiven(args):
     # check any of these command is given or not
-    for elem in ['c','rd','dr','dc']:
+    for elem in ['c','rd','dr','dc','int','mir','rep']:
         if getattr(args,elem):
             return True
     return False
@@ -94,15 +97,25 @@ def main():
 
 
     if (args.int):
+        if not cols:
+            raise ValueError("Index(s) of columns needed for interpolation")
         assert len(cols)==len(args.int), "Invalid number of columns for interpolation"
         if len(cols)==1:
             data = lineGridInt(data, cols[0], args.int[0])
         elif len(cols)==2:
             data = rectGridInt(data, *cols, *args.int)
 
-    if (args.mr): # do mirror
-        
-
+    if args.mir or args.rep: # do mirror
+        cl = len(cols)
+        if cl==0:
+            raise ValueError("Column index(s) required")
+        elif cl>2:
+            raise ValueError("Column index(s) required")
+        else:
+            if args.mir:
+                data = repMirror(data, cols,args.mir,'mir')
+            else:
+                data = repMirror(data, cols,args.rep,'rep')
 
     # now write file
     outFile = args.o

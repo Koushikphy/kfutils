@@ -7,7 +7,7 @@ from tabulate import tabulate
 import time
 
 
-__all__ = ['showStats', 'smoothen', 'writeFile', 'write1DFile', 'repeat', 'mirror','PrepData','rectGridInt','lineGridInt']
+__all__ = ['showStats', 'smoothen', 'writeFile', 'write1DFile', 'repeat', 'mirror','PrepData','rectGridInt','lineGridInt','repMirror']
 
 
 def getSize(file):
@@ -142,25 +142,45 @@ def rectGridInt(data, fc, sc, newGrid1, newGrid2):
 
 
 
-def repMirror(data, cols, times):
+def repMirror(data, cols, times, tp):
     # 1D or 2D
     # for 1D 
     # check values are full
-    col = cols[0]  # just one column
+    if(len(cols)==1):
+        return repMir1D(data, cols[0], times, tp)
+    elif len(cols)==2:
+        fc,sc = cols
+        uniqueVals = np.unique(data[:,fc])
+        res = []
+        for th in uniqueVals:
+            dat = data[data[:,fc]==th]
+            res.append(repMir1D(dat, sc, times,tp))
+        return np.vstack(res)
+    else:
+        raise ValueError("Invalid number of columns.")
+
+
+def repMir1D(data, col, times, tp):
     grid = data[:,col]
     grids = [grid]
     for i in range(1,times):
         grids.append(grid[1:]+grid[-1]*i)
-    newGrid = np.append(*grids)
+    newGrid = np.concatenate(grids)
 
 
     dats = [data]
-    for i in range(1,times):
-        dats.append(np.flipud(data[:-1]))
-
+    if tp=='mir':
+        for i in range(1,times):
+            dats.append(np.flipud(data[:-1]))
+    elif tp=='rep':
+        for i in range(1,times):
+            dats.append(data[:-1])
+    else:
+        raise ValueError("Invalid type.")
     res = np.vstack(dats)
     res[:,col]= newGrid
     return res
+
 
 
 
