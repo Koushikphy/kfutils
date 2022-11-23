@@ -100,6 +100,8 @@ def main():
         elif len(cols)==2:
             data = rectGridInt(data, *cols, *args.int)
 
+    if (args.mr): # do mirror
+        
 
 
     # now write file
@@ -107,10 +109,10 @@ def main():
     if not outFile:
         outFile = "{}_out{}".format(*os.path.splitext(inpFile))
 
-    if len(cols) == 1:  #1D file
-        write1DFile(outFile, data)
-    else:
+    if len(cols) == 2:  #1D file
         writeFile(outFile, data, cols[0])
+    else:
+        write1DFile(outFile, data)
 
 
 

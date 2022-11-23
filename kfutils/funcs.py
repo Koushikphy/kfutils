@@ -142,6 +142,26 @@ def rectGridInt(data, fc, sc, newGrid1, newGrid2):
 
 
 
+def repMirror(data, cols, times):
+    # 1D or 2D
+    # for 1D 
+    # check values are full
+    col = cols[0]  # just one column
+    grid = data[:,col]
+    grids = [grid]
+    for i in range(1,times):
+        grids.append(grid[1:]+grid[-1]*i)
+    newGrid = np.append(*grids)
+
+
+    dats = [data]
+    for i in range(1,times):
+        dats.append(np.flipud(data[:-1]))
+
+    res = np.vstack(dats)
+    res[:,col]= newGrid
+    return res
+
 
 
 def mirror(data, fc=0, sc=1, pDiff=1):
