@@ -1,9 +1,10 @@
 ## `kfutils`: A tool for common data file operations.
 [![Alt text](https://img.shields.io/pypi/v/kfutils.svg?logo=pypi)](https://pypi.org/project/kfutils/)
 [![Alt text](https://img.shields.io/pypi/pyversions/kfutils.svg?logo=python)](https://pypi.org/project/kfutils/)
-[![Alt text](https://img.shields.io/pypi/dm/kfutils.svg?)](https://pypi.org/project/kfutils/)
-[![Alt text](https://img.shields.io/pypi/l/kfutils.svg?)](https://pypi.org/project/kfutils/)
-[![Alt text](https://img.shields.io/pypi/status/kfutils.svg?)](https://pypi.org/project/kfutils/)
+[![Alt text](https://img.shields.io/pypi/dm/kfutils.svg)](https://pypi.org/project/kfutils/)
+[![Alt text](https://img.shields.io/pypi/l/kfutils.svg)](https://pypi.org/project/kfutils/)
+[![Alt text](https://img.shields.io/pypi/status/kfutils.svg)](https://pypi.org/project/kfutils/)
+[![Alt text](https://github.com/koushikphy/kfutils/actions/workflows/python-publish.yml/badge.svg)](https://github.com/Koushikphy/kfutils/releases/latest)
 
 
 ### ⚒ Instalation
