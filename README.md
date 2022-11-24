@@ -24,9 +24,9 @@ kutils [-h] -i FILE [-o FILE] [-c COLS [COLS ...]] [-rd COLS [COLS ...]] [-dr CO
 
 | Argument    |  Description|
 | ----------- | ----------- 
-|    `-i`     | Input file name <br>If no operations are given it will show the stats about the file. |
-|    `-o`     | OOutput file name. (default: '_out' prefix to input file name) | 
-|    `-c`     | Index(s) of grid columns. 2 columns for 2D file. | 
+|    `-i`     | Input file name <br>If no operations are given it will show the stats about the file |
+|    `-o`     | Output file name. (default: '_out' prefix to input file name) | 
+|    `-c`     | Index(s) of grid columns. 2 columns for 2D file | 
 |    `-rd`    | Index(s) of columns to convert to degree from radian |
 |    `-dr`    | Index(s) of columns to convert to radian from degree |
 |    `-dc`    | Index(s) of columns to delete |
